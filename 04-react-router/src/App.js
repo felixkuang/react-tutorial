@@ -1,44 +1,26 @@
-// import './App.css';
-import Home from './Home'; 
-import About  from './About';
-import Login from './routes/Login';
-
-import Root from "./routes/root";
-import ErrorPage from "./error-page";
-
-import {
-  createBrowserRouter,
-  RouterProvider,
-  HashRouter,
-  BrowserRouter,
-  Routes,
-  Route,
-  Link,
-} from "react-router-dom";
-import "./index.css";
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Root/>,
-    errorElement:<ErrorPage/>,
-  },
-]);
-
-// 进行路由配置
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Layout from './Layout'
+import Login from './Login'
+import Board from './Board';
+import Article from './Article';
+import NotFound from './NotFound';
 
 function App() {
   return (
-      <RouterProvider router={router} />
-    // <BrowserRouter>
-    //   <Link to="/">home</Link>
-    //   <Link to="/about">about</Link>
-    //   <Routes>
-    //     <Route path='/' element={<Home/>}></Route>
-    //     <Route path='/about/:id' element={<About/>}></Route>
-    //     <Route path='/login' element={<Login/>}></Route>
-    //   </Routes>
-    // </BrowserRouter>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout/>}>
+            {/* 定义二级路由嵌套 */}
+            {/* 默认二级路由 添加index属性 把它自己的path去掉 */}
+            <Route index element={<Board/>}></Route>
+            <Route path='article' element={<Article/>}></Route>
+        </Route>
+        <Route path="/login" element={<Login/>}></Route>
+        {/* 当所有路径都没有匹配时渲染此路由 */}
+        <Route path='*' element={<NotFound/>}></Route>
+      </Routes>
+    </BrowserRouter>
+ 
   );
 }
 

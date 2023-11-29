@@ -6,9 +6,10 @@ function About(){
 
     let { id } = useParams();
     let param = useParams();
+    console.log(param)
     
     return(
-        <div>about {param.id}</div>
+        <div>about  {id}</div>
     )
 }
 

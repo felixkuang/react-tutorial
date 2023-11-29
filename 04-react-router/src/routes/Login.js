@@ -9,8 +9,11 @@ function Login() {
     }
     return (
         <>
-            <div>login</div>
-            <button onClick={goAbout}>skip about</button>
+            <div>
+                login
+                <button onClick={goAbout}>skip about</button>
+            </div>
+            
         </>
 
     )
